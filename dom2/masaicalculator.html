@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai calculator</title>
+</head>
+<style>
+     #calculator{
+            width: 40%;
+            height: 700px;
+            margin: auto;
+        }
+        h2{
+            text-align: center;
+            font-size: 50px;
+            color: rgb(56, 176, 180);
+        }
+        .key {
+            width: 45%;
+            margin: auto;
+            padding: 5%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 5%;
+            color: white;
+            background-color: white;
+}
+#inputBox{
+    height: 50px;
+    width: 100%;
+    outline: none;
+
+    text-align: right;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #000e1a;
+    pointer-events: none;
+    border-radius: 5%;
+}
+#buttons {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 5%;
+    
+}
+.number{
+border: none;
+height: 50px;
+background-color: white;
+font-weight: 800;
+font-size: 18px;
+font-family: sans-serif;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+border-radius: 10%;
+}
+.operator{
+ border: none;
+color: white;
+background-color: black;
+font-weight: 800;
+font-size: 20px;
+font-family: serif;
+box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
+border-radius: 10%; 
+}
+
+#buttons button:active{
+    transform: scale(0.99);
+}
+
+</style>
+<body>
+    <div id="calculator">
+        <h2>Masai Calculator</h2>
+        <div class="key">
+            <input type="text" placeholder="0" id="inputBox" readonly>
+
+            <div id="buttons">
+            <button data-value="1" class="number">1</button>
+            <button data-value="2" class="number">2</button>
+            <button data-value="3" class="number">3</button>
+            <button data-value="+" class="operator">+</button>
+
+
+            <button data-value="4" class="number">4</button>
+            <button data-value="5" class="number">5</button>
+            <button data-value="6" class="number">6</button>
+            <button data-value="-" class="operator">-</button>
+
+
+            <button data-value="7" class="number">7</button>
+            <button data-value="8" class="number">8</button>
+            <button data-value="9" class="number">9</button>
+            <button data-value="*" class="operator">x</button>
+
+
+            <button data-value="C" class="operator" style="background-color: red;">C</button>
+            <button data-value="0" class="number">0</button>
+            <button data-value="=" class="operator">=</button>
+            <button data-value="/" class="operator">/</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+            let inputBox = document.getElementById("inputBox");
+            let buttons = document.querySelectorAll("#buttons button");
+            let input = "";
+            let result = 0;
+            buttons.forEach(button => {
+                button.addEventListener("click", function() {
+                    let value = button.getAttribute("data-value");
+                    if (value === "=") {
+                            result = eval(input);
+                            input = result.toString();
+                    } else if (value === "C") {
+                        input = "";
+                        result = 0;
+                    } else{
+                        input += value;
+                    }
+                    inputBox.value = input;
+                });
+            });
+        });
+
+
+    
+
+</script>
