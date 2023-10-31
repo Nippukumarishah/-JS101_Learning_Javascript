@@ -24,5 +24,5 @@ myForm.addEventListener('submit',function(e){
     row.append(td1,td2);
     tbody.append(row)
 
-    })
-})
+    });
+});
